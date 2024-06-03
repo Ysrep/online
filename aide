@@ -1,0 +1,55 @@
+System.Threading.Thread threadSend = new System.Threading.Thread(Envoi);
+threadSend.Start();
+
+private static void Envoi(){
+  CreateSockSend(ipEnvoiServeur, Port);
+  while(allowLoopEnvoi){
+    SendToNetwork();
+    System.Threading.Thread.Sleep(5000);
+  }
+}
+
+public static void CreateSockSend(System.Net.IPAddress myIpAddress, ushort myPort){
+  try{
+    if(newSockSend != null)
+      newSockSend.Dispose();
+    ipepSend = new System.Net.IpEndPoint(myIpAddress, myPort);
+    newSockSend = new System.Net.Sockets.UdpClient();
+    newSockSend.Connect(ipepSend);
+  }catch(System.exception e2){
+    error
+  }
+}
+
+System.Net.Sockets.UdpClient newSockSend;
+System.Net.Sockets.UdpClient newSockReceive;
+
+SendToNetwork(/*Envoie donnée*\)
+
+System.Threading.Thread threadReceive = new System.Threading.Thread(Reception);
+threadReceive.Start();
+
+public static void Reception(){
+  CreateSockReceive(IpReception, Port);
+  isLoopReception = true;
+  while(isLoopReception){
+    byte[] myBytesReceives = newSockReceive.Receive(ref ipepReceive);
+    .
+    .
+    .
+  }
+}
+
+public static void CreateSockReceive(System.Net.IPAddress myIpAddress, ushort myPort){
+  try{
+    if(newSockReceive != null)
+      newSockReveive.Dispose();
+    ipepReceive = now System.Net.IPEndPoint(myIPAddress, myPort);
+    newSockReceive = new Systel.Net.Sockets.UdpClient(ipepReceive);
+  }catch(System.Exception e2){
+    error;
+  }
+}
+
+System.Net.IPEndPoint ipepReceive;
+System.Net.IPEndPoint ipepSend;
